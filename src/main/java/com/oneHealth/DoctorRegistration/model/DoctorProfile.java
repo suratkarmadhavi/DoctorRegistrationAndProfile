@@ -56,7 +56,7 @@ public class DoctorProfile
 	@NotEmpty
 	private String degree;
 	
-	@NotEmpty
+	
 	private int passout_year;
 	
 	@NotEmpty
@@ -65,7 +65,7 @@ public class DoctorProfile
 	@NotEmpty
 	private String biography;
 	
-	@NotEmpty
+	
 	private float experiance;
 	
 	@NotEmpty
@@ -77,8 +77,6 @@ public class DoctorProfile
 	@NotEmpty
 	private String aadhar_link;
 	
-	@NotEmpty
-	private String gst_link;
 	
 	// Default constructor required by JPA. Should be available for every entity.
 	public DoctorProfile() 
@@ -89,7 +87,7 @@ public class DoctorProfile
 	public DoctorProfile(long doctor_id, String first_name, String last_name, String email, String contact,
 			String specialization, String license_number, Date birth_date, String gender, String blood_group,
 			String degree, int passout_year, String university, String biography, int experiance, String photo_link,
-			String pan_link, String aadhar_link, String gst_link) {
+			String pan_link, String aadhar_link) {
 		super();
 		this.doctor_id = doctor_id;
 		this.first_name = first_name;
@@ -109,7 +107,7 @@ public class DoctorProfile
 		this.photo_link = photo_link;
 		this.pan_link = pan_link;
 		this.aadhar_link = aadhar_link;
-		this.gst_link = gst_link;
+		
 	}
 
 	public long getDoctor_id() {
@@ -256,13 +254,7 @@ public class DoctorProfile
 		this.aadhar_link = aadhar_link;
 	}
 
-	public String getGst_link() {
-		return gst_link;
-	}
-
-	public void setGst_link(String gst_link) {
-		this.gst_link = gst_link;
-	}
+	
 	
 	
 	
