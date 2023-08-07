@@ -2,6 +2,7 @@ package com.oneHealth.DoctorRegistration.model;
 
 import java.sql.Date;
 
+
 import org.springframework.beans.factory.annotation.Value;
 
 import jakarta.persistence.Entity;
@@ -39,6 +40,9 @@ public class DoctorProfile
 	@NotEmpty
 	private String contact;
 	
+	private String city;
+
+	
 	@NotEmpty
 	private String specialization;
 	
@@ -69,13 +73,13 @@ public class DoctorProfile
 	private float experiance;
 	
 	@NotEmpty
-	private String photo_link;
+	private String photoId;
 	
 	@NotEmpty
-	private String pan_link;
+	private String panId;
 	
 	@NotEmpty
-	private String aadhar_link;
+	private String aadharId;
 	
 	
 	// Default constructor required by JPA. Should be available for every entity.
@@ -84,16 +88,17 @@ public class DoctorProfile
 		
 	}
 
-	public DoctorProfile(long doctor_id, String first_name, String last_name, String email, String contact,
+	public DoctorProfile(long doctor_id, String first_name, String last_name, String email, String contact, String city ,
 			String specialization, String license_number, Date birth_date, String gender, String blood_group,
-			String degree, int passout_year, String university, String biography, int experiance, String photo_link,
-			String pan_link, String aadhar_link) {
+			String degree, int passout_year, String university, String biography, int experiance, String photoId,
+			String panId, String aadharId) {
 		super();
 		this.doctor_id = doctor_id;
 		this.first_name = first_name;
 		this.last_name = last_name;
 		this.email = email;
 		this.contact = contact;
+		this.city = city;
 		this.specialization = specialization;
 		this.license_number = license_number;
 		this.birth_date = birth_date;
@@ -104,9 +109,9 @@ public class DoctorProfile
 		this.university = university;
 		this.biography = biography;
 		this.experiance = experiance;
-		this.photo_link = photo_link;
-		this.pan_link = pan_link;
-		this.aadhar_link = aadhar_link;
+		this.photoId = photoId;
+		this.panId = panId;
+		this.aadharId = aadharId;
 		
 	}
 
@@ -148,6 +153,21 @@ public class DoctorProfile
 
 	public void setContact(String contact) {
 		this.contact = contact;
+	}
+	
+	
+	
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public void setLicense_number(String license_number) {
+		this.license_number = license_number;
 	}
 
 	public String getSpecialization() {
@@ -230,28 +250,28 @@ public class DoctorProfile
 		this.experiance = experiance;
 	}
 
-	public String getPhoto_link() {
-		return photo_link;
+	public String getPhotoId() {
+		return photoId;
 	}
 
-	public void setPhoto_link(String photo_link) {
-		this.photo_link = photo_link;
+	public void setPhotoId(String photoId) {
+		this.photoId = photoId;
 	}
 
-	public String getPan_link() {
-		return pan_link;
+	public String getPanId() {
+		return panId;
 	}
 
-	public void setPan_link(String pan_link) {
-		this.pan_link = pan_link;
+	public void setPanId(String panId) {
+		this.panId = panId;
 	}
 
-	public String getAadhar_link() {
-		return aadhar_link;
+	public String getAadharId() {
+		return aadharId;
 	}
 
-	public void setAadhar_link(String aadhar_link) {
-		this.aadhar_link = aadhar_link;
+	public void setAadharId(String aadharId) {
+		this.aadharId = aadharId;
 	}
 
 	

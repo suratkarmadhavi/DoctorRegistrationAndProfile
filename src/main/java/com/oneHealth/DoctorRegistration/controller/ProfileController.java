@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.oneHealth.DoctorRegistration.exceptions.DatabaseException;
@@ -111,5 +112,13 @@ public class ProfileController {
         LOGGER.info("In Controller - Deleting doctor profile for ID: " + doctor_id);
         service.deleteDoctorProfile(doctor_id);
         return new ResponseEntity<>("Doctor Profile deleted Successfully" , HttpStatus.OK);
+    }
+    
+    
+    @GetMapping("/by-city-and-specialization")
+    public List<DoctorProfile> getDoctorsByCityAndSpecialization(
+            @RequestParam String city,
+            @RequestParam String specialization) {
+        return service.getDoctorsByCityAndSpecialization(city, specialization);
     }
 }

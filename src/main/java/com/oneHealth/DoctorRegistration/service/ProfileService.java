@@ -67,6 +67,9 @@ public interface ProfileService {
 	void deleteDoctorProfile(long doctor_id) throws ProfileNotFoundException;
 	
 	
+	List<DoctorProfile> getDoctorsByCityAndSpecialization(String city, String specialization);
+	
+	
 	
 	
 }

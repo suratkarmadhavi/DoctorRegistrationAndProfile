@@ -87,6 +87,7 @@ public class ProfileServiceImplementation implements ProfileService {
         details.setLast_name(profile.getLast_name());
         details.setEmail(profile.getEmail());
         details.setContact(profile.getContact());
+        details.setCity(profile.getCity());
         details.setGender(profile.getGender());
         details.setBirth_date(profile.getBirth_date());
         details.setBlood_group(profile.getBlood_group());
@@ -115,4 +116,9 @@ public class ProfileServiceImplementation implements ProfileService {
 
         repo.delete(details);
     }
+
+	@Override
+	public List<DoctorProfile> getDoctorsByCityAndSpecialization(String city, String specialization) {
+		return repo.findByCityAndSpecialization(city, specialization);
+	}
 }
