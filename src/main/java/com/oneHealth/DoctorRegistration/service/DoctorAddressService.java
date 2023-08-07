@@ -18,7 +18,7 @@ import com.oneHealth.DoctorRegistration.model.DoctorAddress;
 public interface DoctorAddressService {
 
     // Method to save a DoctorAddress object in the database.
-    DoctorAddress saveDoctorAddress(DoctorAddress address);
+    List<DoctorAddress> saveDoctorAddress(List<DoctorAddress> address);
 
     // Method to retrieve DoctorAddress by its ID and handle AddressNotFoundException if the address for the given doctorId is not found.
     DoctorAddress getDoctorAddressByID(Long doctor_id) throws ProfileNotFoundException;

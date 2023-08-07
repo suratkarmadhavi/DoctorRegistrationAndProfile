@@ -33,8 +33,8 @@ public class DoctorAddressServiceImpl implements DoctorAddressService {
 
     // Method to save a DoctorAddress object in the database.
     @Override
-    public DoctorAddress saveDoctorAddress(DoctorAddress address) {
-        return repo.save(address);
+    public List<DoctorAddress> saveDoctorAddress(List<DoctorAddress> address) {
+        return repo.saveAll(address);
     }
 
     // Method to retrieve DoctorAddress by its ID and handle AddressNotFoundException if the address for the given doctorId is not found.

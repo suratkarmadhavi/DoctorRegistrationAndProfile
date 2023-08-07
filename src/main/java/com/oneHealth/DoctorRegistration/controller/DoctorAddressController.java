@@ -29,6 +29,7 @@ import com.oneHealth.DoctorRegistration.service.DoctorAddressService;
  * @version 1.0
  */
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/api/doctors")
 public class DoctorAddressController {
 
@@ -40,7 +41,7 @@ public class DoctorAddressController {
 
     // Endpoint to save the doctor's address information into the database.
     @PostMapping("/savedoctorAddress")
-    public ResponseEntity<String> saveAddress(@RequestBody DoctorAddress address) {
+    public ResponseEntity<String> saveAddress(@RequestBody List<DoctorAddress> address) {
         service.saveDoctorAddress(address);
         logger.info("In Controller - Doctor Address Saved Successfully: " + address);
         return new ResponseEntity<>("Doctor Address Saved Successfully", HttpStatus.CREATED);
