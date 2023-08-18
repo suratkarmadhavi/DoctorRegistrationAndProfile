@@ -28,7 +28,6 @@ import jakarta.validation.Valid;
  * @version 3.9.10
  */
 @RestController
-@CrossOrigin("*")
 @RequestMapping("/api/doctors")
 public class RegistrationController 
 {

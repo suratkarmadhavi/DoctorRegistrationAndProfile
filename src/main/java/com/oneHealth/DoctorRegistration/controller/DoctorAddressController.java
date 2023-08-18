@@ -29,7 +29,6 @@ import com.oneHealth.DoctorRegistration.service.DoctorAddressService;
  * @version 1.0
  */
 @RestController
-@CrossOrigin("*")
 @RequestMapping("/api/doctors")
 public class DoctorAddressController {
 

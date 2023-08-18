@@ -4,7 +4,7 @@ FROM openjdk:17-jdk-slim
 
  
 
-COPY target/RegistrationProfile.jar app1.jar
+COPY target/DoctorRegistrationProfile.jar app1.jar
 
  
 
