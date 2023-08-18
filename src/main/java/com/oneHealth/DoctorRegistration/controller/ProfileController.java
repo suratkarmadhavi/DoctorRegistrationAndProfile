@@ -32,8 +32,7 @@ import jakarta.validation.Valid;
  * @version 3.9.10
  */
 @RestController
-@CrossOrigin("*")
-@RequestMapping("/api/doctors")
+@RequestMapping("/api/doctors/profile")
 public class ProfileController {
     
     private static final Logger LOGGER = Logger.getLogger(ProfileController.class.getName());

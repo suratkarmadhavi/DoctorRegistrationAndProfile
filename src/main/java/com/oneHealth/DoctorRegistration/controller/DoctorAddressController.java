@@ -29,7 +29,7 @@ import com.oneHealth.DoctorRegistration.service.DoctorAddressService;
  * @version 1.0
  */
 @RestController
-@RequestMapping("/api/doctors")
+@RequestMapping("/api/doctors/addressprofileregistration")
 public class DoctorAddressController {
 
     // Logger for logging important events

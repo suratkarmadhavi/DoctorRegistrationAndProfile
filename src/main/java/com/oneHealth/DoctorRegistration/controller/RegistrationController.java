@@ -28,7 +28,7 @@ import jakarta.validation.Valid;
  * @version 3.9.10
  */
 @RestController
-@RequestMapping("/api/doctors")
+@RequestMapping("/api/doctors/addressprofileregistration")
 public class RegistrationController 
 {
 	@Autowired
