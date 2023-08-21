@@ -17,7 +17,7 @@ import com.oneHealth.DoctorRegistration.service.RegistrationService;
 /**
  * This class provides the implementation for the RegistrationService interface.
  * It handles the business logic for registering doctors and retrieving doctor registration details.
- * @author Anup
+ * @author Madhavi
  * @version 3.9.10
  */
 @Service

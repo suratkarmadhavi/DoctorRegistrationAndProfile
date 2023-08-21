@@ -24,7 +24,7 @@ import jakarta.validation.Valid;
 /**
  * This controller class is responsible for managing APIs related to the registration process.
  * It handles HTTP requests for saving , retrieving , updating and deleting doctor registration details.
- * @author Anup
+ * @author Madhavi
  * @version 3.9.10
  */
 @RestController
@@ -44,7 +44,7 @@ public class RegistrationController
      * @return A ResponseEntity with a success message and HTTP status CREATED (201) on successful registration.
      */
 	@PostMapping("/registration")
-	public ResponseEntity<String> saveProfile(@Valid @RequestBody DoctorRegistration reg  ) throws DatabaseException
+	public ResponseEntity<String> saveProfile( @RequestBody DoctorRegistration reg  ) throws DatabaseException
 	{
 		service.saveRegistrationDetails(reg);
 		return new ResponseEntity<>("Registration Details Saved Successfully", HttpStatus.CREATED);

@@ -5,8 +5,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.oneHealth.DoctorRegistration.OneHealthTest3PostgresApplication;
 
+
 //@SpringBootTest
-@SpringBootTest(classes = OneHealthTest3PostgresApplication.class)
+@SpringBootTest(classes =OneHealthTest3PostgresApplication.class)
 class OneHealthTest3PostgresApplicationTests {
 
 	@Test

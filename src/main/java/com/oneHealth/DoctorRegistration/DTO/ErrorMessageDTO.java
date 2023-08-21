@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * Data Transfer Object (DTO) class representing an error message.
  * This class holds the timestamp of the error occurrence, the error message, and additional details about the error.
- * @author Anup
+ * @author Madhavi
  * @version 3.9.10
  */
 public class ErrorMessageDTO {

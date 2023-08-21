@@ -16,7 +16,7 @@ import jakarta.validation.constraints.Size;
  * This class represents the DoctorRegistration entity used to register doctors in our application.
  * Doctors can be registered with various attributes such as first name, last name, email, contact,
  * license number, specialization, status, and password.
- * @author Anup
+ * @author Madhavi
  * @version 3.9.10
  */
 @Entity
