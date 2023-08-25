@@ -16,7 +16,7 @@ public interface ProfileService {
 
     /**
      * Saves the doctor profile information into the database.
-     *
+     *+
      * @param profile The DoctorProfile object containing the doctor's profile details.
      * @return The saved DoctorProfile object.
      * @throws DatabaseException If there is an issue while interacting with the database.
