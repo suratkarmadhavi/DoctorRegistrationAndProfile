@@ -28,60 +28,24 @@ public class DoctorProfile
 	@Value(value="101")
 	private long doctor_id;
 	
-	@NotEmpty
 	private String first_name;
-	
-	@NotEmpty
 	private String last_name;
-	
-	@Email
 	private String email;
-	
-	@NotEmpty
 	private String contact;
-	
 	private String city;
-
-	
-	@NotEmpty
 	private String specialization;
-	
-	@NotEmpty
 	private String license_number;
-	
 	private Date birth_date;
-	
-	@NotEmpty
 	private String gender;
-	
-	@NotEmpty
 	private String blood_group;
-	
-	@NotEmpty
 	private String degree;
-	
-	
 	private int passout_year;
-	
-	@NotEmpty
 	private String university;
-	
-	@NotEmpty
 	private String biography;
-	
-	
 	private float experiance;
-	
-	@NotEmpty
 	private String photoId;
-	
-	@NotEmpty
 	private String panId;
-	
-	@NotEmpty
 	private String aadharId;
-	
-	@NotEmpty
 	private String medicalCertId;
 	
 	
