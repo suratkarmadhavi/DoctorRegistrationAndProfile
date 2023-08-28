@@ -122,4 +122,11 @@ public class ProfileServiceImplementation implements ProfileService {
 	public List<DoctorProfile> getDoctorsByCityAndSpecialization(String city, String specialization) {
 		return repo.findByCityAndSpecialization(city, specialization);
 	}
+	
+	@Override
+    public List<DoctorProfile> getDoctorsBySpecialization(String specialization) {
+
+        return repo.findBySpecialization(specialization);
+
+    }
 }

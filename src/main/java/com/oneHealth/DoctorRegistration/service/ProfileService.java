@@ -69,6 +69,8 @@ public interface ProfileService {
 	
 	List<DoctorProfile> getDoctorsByCityAndSpecialization(String city, String specialization);
 	
+	List<DoctorProfile> getDoctorsBySpecialization(String specialization);
+	
 	
 	
 	

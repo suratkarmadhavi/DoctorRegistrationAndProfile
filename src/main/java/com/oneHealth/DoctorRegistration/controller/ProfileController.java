@@ -122,4 +122,13 @@ public class ProfileController {
             @RequestParam String specialization) {
         return service.getDoctorsByCityAndSpecialization(city, specialization);
     }
+    
+    
+    @GetMapping("/by-specialization")
+    public List<DoctorProfile> getDoctorsBySpecialization(@RequestParam String specialization)
+    {
+
+        return service.getDoctorsBySpecialization(specialization);
+
+    }
 }

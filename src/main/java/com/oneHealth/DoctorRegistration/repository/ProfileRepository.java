@@ -15,4 +15,5 @@ import com.oneHealth.DoctorRegistration.model.DoctorProfile;
  */
 public interface ProfileRepository extends JpaRepository<DoctorProfile, Long> {
 	 List<DoctorProfile> findByCityAndSpecialization(String city, String specialization);
+	 List<DoctorProfile> findBySpecialization(String specialization);
 }
