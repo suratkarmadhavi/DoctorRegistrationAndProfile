@@ -47,6 +47,7 @@ public class DoctorProfile
 	private String panId;
 	private String aadharId;
 	private String medicalCertId;
+	private int consultationFees;
 	
 	
 	// Default constructor required by JPA. Should be available for every entity.
@@ -56,12 +57,10 @@ public class DoctorProfile
 	}
 
 
-	public DoctorProfile(long doctor_id, @NotEmpty String first_name, @NotEmpty String last_name, @Email String email,
-			@NotEmpty String contact, String city, @NotEmpty String specialization, @NotEmpty String license_number,
-			Date birth_date, @NotEmpty String gender, @NotEmpty String blood_group, @NotEmpty String degree,
-			int passout_year, @NotEmpty String university, @NotEmpty String biography, float experiance,
-			@NotEmpty String photoId, @NotEmpty String panId, @NotEmpty String aadharId,
-			@NotEmpty String medicalCertId) {
+	public DoctorProfile(long doctor_id, String first_name, String last_name, String email, String contact, String city,
+			String specialization, String license_number, Date birth_date, String gender, String blood_group,
+			String degree, int passout_year, String university, String biography, float experiance, String photoId,
+			String panId, String aadharId, String medicalCertId, int consultationFees) {
 		super();
 		this.doctor_id = doctor_id;
 		this.first_name = first_name;
@@ -83,6 +82,7 @@ public class DoctorProfile
 		this.panId = panId;
 		this.aadharId = aadharId;
 		this.medicalCertId = medicalCertId;
+		this.consultationFees = consultationFees;
 	}
 
 
@@ -286,6 +286,16 @@ public class DoctorProfile
 	}
 
 
+	public int getConsultationFees() {
+		return consultationFees;
+	}
+
+
+	public void setConsultationFees(int consultationFees) {
+		this.consultationFees = consultationFees;
+	}
+
+
 	@Override
 	public String toString() {
 		return "DoctorProfile [doctor_id=" + doctor_id + ", first_name=" + first_name + ", last_name=" + last_name
@@ -294,10 +304,10 @@ public class DoctorProfile
 				+ ", blood_group=" + blood_group + ", degree=" + degree + ", passout_year=" + passout_year
 				+ ", university=" + university + ", biography=" + biography + ", experiance=" + experiance
 				+ ", photoId=" + photoId + ", panId=" + panId + ", aadharId=" + aadharId + ", medicalCertId="
-				+ medicalCertId + "]";
+				+ medicalCertId + ", consultationFees=" + consultationFees + "]";
 	}
 
-	
+
 	
 	
 }
