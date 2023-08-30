@@ -61,7 +61,11 @@ public class DoctorAddressServiceImpl implements DoctorAddressService {
                 .orElseThrow(() -> new ProfileNotFoundException("No Doctor Address found with this ID: " + clinicId));
 
         // Update address property with the new value from updatedAddress
+        doctorAddress.setClinicName(updatedAddress.getClinicName());
         doctorAddress.setAddress(updatedAddress.getAddress());
+        doctorAddress.setLocation(updatedAddress.getLocation());
+        doctorAddress.setCity(updatedAddress.getCity());
+        doctorAddress.setPinCode(updatedAddress.getPinCode());
 
         DoctorAddress updatedAddressResult = repo.save(doctorAddress);
         logger.info("In Service - Doctor Address Updated Successfully: " + updatedAddressResult);

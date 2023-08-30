@@ -71,7 +71,7 @@ public class DoctorAddressController {
     }
 
     // Endpoint to delete the doctor's address information by doctorId from the database.
-    @DeleteMapping("/getdoctorAddressById/{clinicId}")
+    @DeleteMapping("/deletedoctorAddressById/{clinicId}")
     public ResponseEntity<String> deleteAddressByID(@PathVariable(value = "clinicId") long clinicId) throws ProfileNotFoundException {
         service.deleteAddressByID(clinicId);
         logger.info("In Controller - Doctor Address Deleted Successfully with ID: " + clinicId);
