@@ -39,9 +39,9 @@ public class DoctorAddressServiceImpl implements DoctorAddressService {
 
     // Method to retrieve DoctorAddress by its ID and handle AddressNotFoundException if the address for the given doctorId is not found.
     @Override
-    public DoctorAddress getDoctorAddressByID(Long doctor_id) throws ProfileNotFoundException {
-        DoctorAddress address = repo.findById(doctor_id)
-                .orElseThrow(() -> new ProfileNotFoundException("No Address Found with this ID: " + doctor_id));
+    public DoctorAddress getDoctorAddressByID(Long clinicId) throws ProfileNotFoundException {
+        DoctorAddress address = repo.findById(clinicId)
+                .orElseThrow(() -> new ProfileNotFoundException("No Address Found with this ID: " + clinicId));
         logger.info("In Service - Doctor Address Retrieved: " + address);
         return address;
     }
@@ -56,9 +56,9 @@ public class DoctorAddressServiceImpl implements DoctorAddressService {
 
     // Method to update DoctorAddress by its ID and handle AddressNotFoundException if the address for the given doctorId is not found.
     @Override
-    public DoctorAddress updateAddressByID(long doctorId, DoctorAddress updatedAddress) throws ProfileNotFoundException {
-        DoctorAddress doctorAddress = repo.findById(doctorId)
-                .orElseThrow(() -> new ProfileNotFoundException("No Doctor Address found with this ID: " + doctorId));
+    public DoctorAddress updateAddressByID(long clinicId, DoctorAddress updatedAddress) throws ProfileNotFoundException {
+        DoctorAddress doctorAddress = repo.findById(clinicId)
+                .orElseThrow(() -> new ProfileNotFoundException("No Doctor Address found with this ID: " + clinicId));
 
         // Update address property with the new value from updatedAddress
         doctorAddress.setAddress(updatedAddress.getAddress());
@@ -70,12 +70,12 @@ public class DoctorAddressServiceImpl implements DoctorAddressService {
 
     // Method to delete DoctorAddress by its ID and handle AddressNotFoundException if the address for the given doctorId is not found.
     @Override
-    public DoctorAddress deleteAddressByID(long doctorId) throws ProfileNotFoundException {
-        DoctorAddress doctorAddress = repo.findById(doctorId)
-                .orElseThrow(() -> new ProfileNotFoundException("No Doctor Address found with this ID: " + doctorId));
+    public DoctorAddress deleteAddressByID(long clinicId) throws ProfileNotFoundException {
+        DoctorAddress doctorAddress = repo.findById(clinicId)
+                .orElseThrow(() -> new ProfileNotFoundException("No Doctor Address found with this ID: " + clinicId));
 
         repo.delete(doctorAddress);
-        logger.info("In Service - Doctor Address Deleted Successfully with ID: " + doctorId);
+        logger.info("In Service - Doctor Address Deleted Successfully with ID: " + clinicId);
         return doctorAddress;
     }
 

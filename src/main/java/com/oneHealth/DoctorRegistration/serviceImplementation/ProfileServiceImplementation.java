@@ -97,6 +97,7 @@ public class ProfileServiceImplementation implements ProfileService {
         details.setUniversity(profile.getUniversity());
         details.setExperiance(profile.getExperiance());
         details.setBiography(profile.getBiography());
+        details.setConsultationFees(profile.getConsultationFees());
 
         return repo.save(details);
     }

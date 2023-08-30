@@ -21,16 +21,16 @@ public interface DoctorAddressService {
     List<DoctorAddress> saveDoctorAddress(List<DoctorAddress> address);
 
     // Method to retrieve DoctorAddress by its ID and handle AddressNotFoundException if the address for the given doctorId is not found.
-    DoctorAddress getDoctorAddressByID(Long doctor_id) throws ProfileNotFoundException;
+    DoctorAddress getDoctorAddressByID(Long clinicId) throws ProfileNotFoundException;
 
     // Method to retrieve a list of all DoctorAddress objects from the database and handle DatabaseException if any occurs.
     List<DoctorAddress> getAllDoctorsAddress() throws DatabaseException;
 
     // Method to update DoctorAddress by its ID and handle AddressNotFoundException if the address for the given doctorId is not found.
-    DoctorAddress updateAddressByID(long doctorId, DoctorAddress doctorAddress) throws ProfileNotFoundException;
+    DoctorAddress updateAddressByID(long clinicId, DoctorAddress doctorAddress) throws ProfileNotFoundException;
 
     // Method to delete DoctorAddress by its ID and handle AddressNotFoundException if the address for the given doctorId is not found.
-    DoctorAddress deleteAddressByID(long doctorId) throws ProfileNotFoundException;
+    DoctorAddress deleteAddressByID(long clinicId) throws ProfileNotFoundException;
     
     List<DoctorAddress> getAddressesByDoctorId(long doctorId);
 

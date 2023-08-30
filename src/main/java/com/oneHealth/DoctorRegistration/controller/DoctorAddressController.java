@@ -47,9 +47,9 @@ public class DoctorAddressController {
     }
 
     // Endpoint to retrieve the doctor's address information by doctorId from the database.
-    @GetMapping("/getdoctorAddressById/{doctorId}")
-    public ResponseEntity<DoctorAddress> getDoctorAddressByID(@PathVariable(value = "doctorId") Long doctorId) throws ProfileNotFoundException {
-        DoctorAddress obj = service.getDoctorAddressByID(doctorId);
+    @GetMapping("/getdoctorAddressById/{clinicId}")
+    public ResponseEntity<DoctorAddress> getDoctorAddressByID(@PathVariable(value = "clinicId") Long clinicId) throws ProfileNotFoundException {
+        DoctorAddress obj = service.getDoctorAddressByID(clinicId);
         logger.info("In Controller - Doctor Address Retrieved: " + obj);
         return ResponseEntity.ok().body(obj);
     }
@@ -63,18 +63,18 @@ public class DoctorAddressController {
     }
 
     // Endpoint to update the doctor's address information by doctorId in the database.
-    @PutMapping("/updateDoctorAddress/{doctorId}")
-    public ResponseEntity<String> updateDoctorAddress(@PathVariable(value = "doctorId") long doctorId, @RequestBody DoctorAddress doctorAddress) throws ProfileNotFoundException {
-        service.updateAddressByID(doctorId, doctorAddress);
+    @PutMapping("/updateDoctorAddress/{clinicId}")
+    public ResponseEntity<String> updateDoctorAddress(@PathVariable(value = "clinicId") long clinicId, @RequestBody DoctorAddress doctorAddress) throws ProfileNotFoundException {
+        service.updateAddressByID(clinicId, doctorAddress);
         logger.info("In Controller - Doctor Address Updated Successfully: " + doctorAddress);
         return new ResponseEntity<>("Doctor Address updated Successfully", HttpStatus.CREATED);
     }
 
     // Endpoint to delete the doctor's address information by doctorId from the database.
-    @DeleteMapping("/getdoctorAddressById/{doctorId}")
-    public ResponseEntity<String> deleteAddressByID(@PathVariable(value = "doctorId") long doctorId) throws ProfileNotFoundException {
-        service.deleteAddressByID(doctorId);
-        logger.info("In Controller - Doctor Address Deleted Successfully with ID: " + doctorId);
+    @DeleteMapping("/getdoctorAddressById/{clinicId}")
+    public ResponseEntity<String> deleteAddressByID(@PathVariable(value = "clinicId") long clinicId) throws ProfileNotFoundException {
+        service.deleteAddressByID(clinicId);
+        logger.info("In Controller - Doctor Address Deleted Successfully with ID: " + clinicId);
         return new ResponseEntity<>("Doctor Address deleted Successfully", HttpStatus.OK);
     }
     
