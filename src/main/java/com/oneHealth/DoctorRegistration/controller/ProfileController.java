@@ -17,9 +17,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.oneHealth.DoctorRegistration.DTO.DocumentsDTO;
+import com.oneHealth.DoctorRegistration.DTO.UpdateSpecializationsRequest;
 import com.oneHealth.DoctorRegistration.exceptions.DatabaseException;
 import com.oneHealth.DoctorRegistration.exceptions.ProfileNotFoundException;
 import com.oneHealth.DoctorRegistration.model.DoctorProfile;
+import com.oneHealth.DoctorRegistration.model.Specialization;
 import com.oneHealth.DoctorRegistration.service.ProfileService;
 
 import jakarta.validation.Valid;
@@ -130,5 +133,44 @@ public class ProfileController {
 
         return service.getDoctorsBySpecialization(specialization);
 
+    }
+    
+    
+    @PutMapping("/{doctor_id}/update-documents")
+    public ResponseEntity<String> updateDoctorProfile(
+            @PathVariable Long doctor_id, @RequestBody DocumentsDTO request) {
+        boolean updated = service.updateDocuments(doctor_id, request);
+        
+        if (updated) {
+            return ResponseEntity.ok("Doctor profile updated successfully.");
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+    
+    
+    @PutMapping("/{specId}/update-specializations")
+    public ResponseEntity<String> updateSpecializationName(
+            @PathVariable Long specId, @RequestBody Specialization request) {
+        boolean updated = service.updateSpecializationName(specId, request.getName());
+        
+        if (updated) {
+            return ResponseEntity.ok("Specialization name updated successfully.");
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+    
+    
+    @DeleteMapping("/{doctorId}/remove-specialization/{specializationId}")
+    public ResponseEntity<String> removeSpecializationFromDoctor(
+            @PathVariable Long doctorId, @PathVariable Long specializationId) {
+        boolean removed = service.removeSpecializationFromDoctor(doctorId, specializationId);
+        
+        if (removed) {
+            return ResponseEntity.ok("Specialization removed from doctor successfully.");
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }

@@ -1,12 +1,16 @@
 D:\InfobellIT_Projects\OneHealth\OneHealth-DoctorRegistrationAndProfile\src\main\java\com\oneHealth\DoctorRegistration\controller\ProfileController.java
+D:\InfobellIT_Projects\OneHealth\OneHealth-DoctorRegistrationAndProfile\src\main\java\com\oneHealth\DoctorRegistration\repository\SpecializationRepository.java
 D:\InfobellIT_Projects\OneHealth\OneHealth-DoctorRegistrationAndProfile\src\main\java\com\oneHealth\DoctorRegistration\controller\DoctorAddressController.java
 D:\InfobellIT_Projects\OneHealth\OneHealth-DoctorRegistrationAndProfile\src\main\java\com\oneHealth\DoctorRegistration\repository\ProfileRepository.java
 D:\InfobellIT_Projects\OneHealth\OneHealth-DoctorRegistrationAndProfile\src\main\java\com\oneHealth\DoctorRegistration\serviceImplementation\ProfileServiceImplementation.java
 D:\InfobellIT_Projects\OneHealth\OneHealth-DoctorRegistrationAndProfile\src\main\java\com\oneHealth\DoctorRegistration\controller\RegistrationController.java
+D:\InfobellIT_Projects\OneHealth\OneHealth-DoctorRegistrationAndProfile\src\main\java\com\oneHealth\DoctorRegistration\DTO\UpdateSpecializationsRequest.java
+D:\InfobellIT_Projects\OneHealth\OneHealth-DoctorRegistrationAndProfile\src\main\java\com\oneHealth\DoctorRegistration\model\Specialization.java
 D:\InfobellIT_Projects\OneHealth\OneHealth-DoctorRegistrationAndProfile\src\main\java\com\oneHealth\DoctorRegistration\repository\RegistrationRepository.java
 D:\InfobellIT_Projects\OneHealth\OneHealth-DoctorRegistrationAndProfile\src\main\java\com\oneHealth\DoctorRegistration\DTO\ErrorMessageDTO.java
 D:\InfobellIT_Projects\OneHealth\OneHealth-DoctorRegistrationAndProfile\src\main\java\com\oneHealth\DoctorRegistration\service\DoctorAddressService.java
 D:\InfobellIT_Projects\OneHealth\OneHealth-DoctorRegistrationAndProfile\src\main\java\com\oneHealth\DoctorRegistration\exceptions\ProfileNotFoundException.java
+D:\InfobellIT_Projects\OneHealth\OneHealth-DoctorRegistrationAndProfile\src\main\java\com\oneHealth\DoctorRegistration\DTO\DocumentsDTO.java
 D:\InfobellIT_Projects\OneHealth\OneHealth-DoctorRegistrationAndProfile\src\main\java\com\oneHealth\DoctorRegistration\model\DoctorAddress.java
 D:\InfobellIT_Projects\OneHealth\OneHealth-DoctorRegistrationAndProfile\src\main\java\com\oneHealth\DoctorRegistration\model\DoctorProfile.java
 D:\InfobellIT_Projects\OneHealth\OneHealth-DoctorRegistrationAndProfile\src\main\java\com\oneHealth\DoctorRegistration\OneHealthTest3PostgresApplication.java

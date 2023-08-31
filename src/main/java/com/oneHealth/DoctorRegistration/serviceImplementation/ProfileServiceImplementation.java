@@ -1,15 +1,20 @@
 package com.oneHealth.DoctorRegistration.serviceImplementation;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.oneHealth.DoctorRegistration.DTO.DocumentsDTO;
 import com.oneHealth.DoctorRegistration.exceptions.DatabaseException;
 import com.oneHealth.DoctorRegistration.exceptions.ProfileNotFoundException;
 import com.oneHealth.DoctorRegistration.model.DoctorProfile;
+import com.oneHealth.DoctorRegistration.model.Specialization;
 import com.oneHealth.DoctorRegistration.repository.ProfileRepository;
+import com.oneHealth.DoctorRegistration.repository.SpecializationRepository;
 import com.oneHealth.DoctorRegistration.service.ProfileService;
 
 
@@ -27,6 +32,9 @@ public class ProfileServiceImplementation implements ProfileService {
 
     @Autowired
     private ProfileRepository repo;
+    
+    @Autowired
+    private SpecializationRepository specRepo;
 
     /**
      * Saves the doctor profile information into the database.
@@ -91,7 +99,6 @@ public class ProfileServiceImplementation implements ProfileService {
         details.setGender(profile.getGender());
         details.setBirth_date(profile.getBirth_date());
         details.setBlood_group(profile.getBlood_group());
-        details.setSpecialization(profile.getSpecialization());
         details.setDegree(profile.getDegree());
         details.setPassout_year(profile.getPassout_year());
         details.setUniversity(profile.getUniversity());
@@ -120,13 +127,75 @@ public class ProfileServiceImplementation implements ProfileService {
 
 	@Override
 	public List<DoctorProfile> getDoctorsByCityAndSpecialization(String city, String specialization) {
-		return repo.findByCityAndSpecialization(city, specialization);
+		return repo.findByCityAndSpecializations_Name(city, specialization);
 	}
 	
 	@Override
     public List<DoctorProfile> getDoctorsBySpecialization(String specialization) {
 
-        return repo.findBySpecialization(specialization);
+        return repo.findBySpecializations_Name(specialization);
 
     }
+
+	@Override
+	public Boolean updateDocuments(long doctor_id, DocumentsDTO documents) {
+		Optional<DoctorProfile> optionalDoctor = repo.findById(doctor_id);
+        
+        if (optionalDoctor.isPresent()) {
+            DoctorProfile doctor = optionalDoctor.get();
+            doctor.setPhotoId(documents.getPhotoId());
+            doctor.setPanId(documents.getPanId());
+            doctor.setAadharId(documents.getAadharId());
+            doctor.setMedicalCertId(documents.getMedicalCertId());
+            
+            repo.save(doctor);
+            return true;
+        }
+        
+        return false;
+    
+	}
+
+	@Override
+	public boolean updateSpecializationName(Long specializationId, String newName) {
+		Optional<Specialization> optionalSpecialization = specRepo.findById(specializationId);
+        
+        if (optionalSpecialization.isPresent()) {
+            Specialization specialization = optionalSpecialization.get();
+            specialization.setName(newName);
+            
+            specRepo.save(specialization);
+            return true;
+        }
+        
+        return false;
+	}
+
+	@Override
+	public boolean removeSpecializationFromDoctor(Long doctorId, long specializationId) {
+		Optional<DoctorProfile> optionalDoctor = repo.findById(doctorId);
+        
+        if (optionalDoctor.isPresent()) {
+            DoctorProfile doctor = optionalDoctor.get();
+            
+            // Remove the specialization from the doctor's specializations set
+            doctor.getSpecializations().removeIf(s -> s.getSpecId()==(specializationId));
+            repo.save(doctor);
+            
+            return true;
+        }
+        
+        return false;
+	}
+
+	
+	
+	
+	
+
+
+
+
+
+	
 }

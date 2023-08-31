@@ -1,14 +1,20 @@
 package com.oneHealth.DoctorRegistration.model;
 
 import java.sql.Date;
-
+import java.util.HashSet;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Value;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 
@@ -33,7 +39,6 @@ public class DoctorProfile
 	private String email;
 	private String contact;
 	private String city;
-	private String specialization;
 	private String license_number;
 	private Date birth_date;
 	private String gender;
@@ -49,6 +54,14 @@ public class DoctorProfile
 	private String medicalCertId;
 	private int consultationFees;
 	
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+	@JoinTable(
+	    name = "doctor_specialization",
+	    joinColumns = @JoinColumn(name = "doctor_id"),
+	    inverseJoinColumns = @JoinColumn(name = "specialization_id")
+	)
+	private Set<Specialization> specializations = new HashSet<>();
+	
 	
 	// Default constructor required by JPA. Should be available for every entity.
 	public DoctorProfile() 
@@ -58,9 +71,9 @@ public class DoctorProfile
 
 
 	public DoctorProfile(long doctor_id, String first_name, String last_name, String email, String contact, String city,
-			String specialization, String license_number, Date birth_date, String gender, String blood_group,
-			String degree, int passout_year, String university, String biography, float experiance, String photoId,
-			String panId, String aadharId, String medicalCertId, int consultationFees) {
+			String license_number, Date birth_date, String gender, String blood_group, String degree, int passout_year,
+			String university, String biography, float experiance, String photoId, String panId, String aadharId,
+			String medicalCertId, int consultationFees, Set<Specialization> specializations) {
 		super();
 		this.doctor_id = doctor_id;
 		this.first_name = first_name;
@@ -68,7 +81,6 @@ public class DoctorProfile
 		this.email = email;
 		this.contact = contact;
 		this.city = city;
-		this.specialization = specialization;
 		this.license_number = license_number;
 		this.birth_date = birth_date;
 		this.gender = gender;
@@ -83,6 +95,7 @@ public class DoctorProfile
 		this.aadharId = aadharId;
 		this.medicalCertId = medicalCertId;
 		this.consultationFees = consultationFees;
+		this.specializations = specializations;
 	}
 
 
@@ -143,16 +156,6 @@ public class DoctorProfile
 
 	public void setCity(String city) {
 		this.city = city;
-	}
-
-
-	public String getSpecialization() {
-		return specialization;
-	}
-
-
-	public void setSpecialization(String specialization) {
-		this.specialization = specialization;
 	}
 
 
@@ -296,15 +299,25 @@ public class DoctorProfile
 	}
 
 
+	public Set<Specialization> getSpecializations() {
+		return specializations;
+	}
+
+
+	public void setSpecializations(Set<Specialization> specializations) {
+		this.specializations = specializations;
+	}
+
+
 	@Override
 	public String toString() {
 		return "DoctorProfile [doctor_id=" + doctor_id + ", first_name=" + first_name + ", last_name=" + last_name
-				+ ", email=" + email + ", contact=" + contact + ", city=" + city + ", specialization=" + specialization
-				+ ", license_number=" + license_number + ", birth_date=" + birth_date + ", gender=" + gender
-				+ ", blood_group=" + blood_group + ", degree=" + degree + ", passout_year=" + passout_year
-				+ ", university=" + university + ", biography=" + biography + ", experiance=" + experiance
-				+ ", photoId=" + photoId + ", panId=" + panId + ", aadharId=" + aadharId + ", medicalCertId="
-				+ medicalCertId + ", consultationFees=" + consultationFees + "]";
+				+ ", email=" + email + ", contact=" + contact + ", city=" + city + ", license_number=" + license_number
+				+ ", birth_date=" + birth_date + ", gender=" + gender + ", blood_group=" + blood_group + ", degree="
+				+ degree + ", passout_year=" + passout_year + ", university=" + university + ", biography=" + biography
+				+ ", experiance=" + experiance + ", photoId=" + photoId + ", panId=" + panId + ", aadharId=" + aadharId
+				+ ", medicalCertId=" + medicalCertId + ", consultationFees=" + consultationFees + ", specializations="
+				+ specializations + "]";
 	}
 
 

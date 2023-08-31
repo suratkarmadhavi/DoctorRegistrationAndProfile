@@ -1,10 +1,13 @@
 package com.oneHealth.DoctorRegistration.service;
 
 import java.util.List;
+import java.util.Set;
 
+import com.oneHealth.DoctorRegistration.DTO.DocumentsDTO;
 import com.oneHealth.DoctorRegistration.exceptions.DatabaseException;
 import com.oneHealth.DoctorRegistration.exceptions.ProfileNotFoundException;
 import com.oneHealth.DoctorRegistration.model.DoctorProfile;
+import com.oneHealth.DoctorRegistration.model.Specialization;
 
 /**
  * The ProfileService interface defines the contract for managing doctor profile-related operations.
@@ -70,6 +73,12 @@ public interface ProfileService {
 	List<DoctorProfile> getDoctorsByCityAndSpecialization(String city, String specialization);
 	
 	List<DoctorProfile> getDoctorsBySpecialization(String specialization);
+	
+	Boolean updateDocuments(long doctor_id,DocumentsDTO documents);
+	
+	boolean updateSpecializationName(Long specializationId, String newName);
+	
+	boolean removeSpecializationFromDoctor(Long doctorId, long specializationId);
 	
 	
 	
