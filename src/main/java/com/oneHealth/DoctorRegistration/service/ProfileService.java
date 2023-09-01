@@ -80,6 +80,8 @@ public interface ProfileService {
 	
 	boolean removeSpecializationFromDoctor(Long doctorId, long specializationId);
 	
+	boolean checkIsDoctorAvailable(Long doctor_id);
+	
 	
 	
 	

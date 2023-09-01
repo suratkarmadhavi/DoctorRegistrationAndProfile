@@ -173,4 +173,10 @@ public class ProfileController {
             return ResponseEntity.notFound().build();
         }
     }
+    
+    @GetMapping("/IsDoctorAvailable/{doctor_id}")
+    public boolean checkIsDoctorAvailable(@PathVariable long doctor_id)
+    {
+    	return service.checkIsDoctorAvailable(doctor_id);
+    }
 }

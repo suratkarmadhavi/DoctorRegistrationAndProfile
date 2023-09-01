@@ -190,6 +190,13 @@ public class ProfileServiceImplementation implements ProfileService {
 
 	
 	
+	@Override
+	public boolean checkIsDoctorAvailable(Long doctor_id) {
+		return repo.existsById(doctor_id);
+	}
+
+	
+	
 	
 	
 
