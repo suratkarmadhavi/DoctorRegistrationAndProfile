@@ -51,12 +51,17 @@ public class ProfileController {
      * @throws DatabaseException If there is an issue while interacting with the database.
      */
     @PostMapping("/saveprofile")
-    public ResponseEntity<String> saveDoctorProfile(@Valid @RequestBody DoctorProfile profile) throws DatabaseException
-    {
+    public ResponseEntity<String> saveDoctorProfile(@Valid @RequestBody DoctorProfile profile) {
         LOGGER.info("In Controller - Saving doctor profile: " + profile);
-        service.SaveDoctorProfile(profile);
-        return new ResponseEntity<>("Doctor Profile Saved Successfully", HttpStatus.CREATED);
+        try {
+            service.SaveDoctorProfile(profile);
+            return new ResponseEntity<>("Doctor Profile Saved Successfully", HttpStatus.CREATED);
+        } catch (DatabaseException e) {
+            LOGGER.info("Error while saving doctor profile: " + e.getMessage());
+            return new ResponseEntity<>("Failed to save doctor profile", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
+
 
     /**
      * Retrieves a specific doctor profile from the database based on the provided doctor_id.
@@ -66,12 +71,17 @@ public class ProfileController {
      * @throws ProfileNotFoundException If no doctor profile is found with the given ID.
      */
     @GetMapping("/getdoctorprofile/{id}")
-    public ResponseEntity<DoctorProfile> getProfileByID(@PathVariable(value="id") Long doctor_id) throws ProfileNotFoundException
-    {
+    public ResponseEntity<DoctorProfile> getProfileByID(@PathVariable(value="id") Long doctor_id) {
         LOGGER.info("In Controller - Retrieving doctor profile for ID: " + doctor_id);
-        DoctorProfile obj = service.getProfileByID(doctor_id);
-        return ResponseEntity.ok().body(obj);
+        try {
+            DoctorProfile obj = service.getProfileByID(doctor_id);
+            return ResponseEntity.ok().body(obj);
+        } catch (ProfileNotFoundException e) {
+            LOGGER.info("Profile not found for ID: " + doctor_id);
+            return ResponseEntity.notFound().build();
+        }
     }
+
 
     /**
      * Retrieves the list of all doctors' profiles from the database.
@@ -80,12 +90,17 @@ public class ProfileController {
      * @throws DatabaseException If an error occurs while retrieving the data from the database.
      */
     @GetMapping("/getalldoctorsprofile")
-    public ResponseEntity<List<DoctorProfile>> getAllDoctorsProfile() throws DatabaseException
-    {
+    public ResponseEntity<List<DoctorProfile>> getAllDoctorsProfile() {
         LOGGER.info("In Controller - Retrieving profiles of all doctors");
-        List<DoctorProfile> doctorsprofile = service.getAllDoctorsProfile();
-        return new ResponseEntity<>(doctorsprofile, HttpStatus.OK);
+        try {
+            List<DoctorProfile> doctorsprofile = service.getAllDoctorsProfile();
+            return ResponseEntity.ok(doctorsprofile);
+        } catch (DatabaseException e) {
+            LOGGER.info("Error while retrieving all doctors' profiles: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
+
 
     /**
      * Updates the profile of a doctor identified by the given doctor_id.
@@ -96,12 +111,17 @@ public class ProfileController {
      * @throws ProfileNotFoundException If no doctor's profile is found with the given doctor_id.
      */
     @PutMapping("/updateprofile/{id}")
-    public ResponseEntity<String> updateDoctorProfile(@PathVariable(value="id") Long doctor_id , @RequestBody DoctorProfile profile) throws ProfileNotFoundException
-    {
+    public ResponseEntity<String> updateDoctorProfile(@PathVariable(value="id") Long doctor_id , @RequestBody DoctorProfile profile) {
         LOGGER.info("In Controller - Updating doctor profile for ID: " + doctor_id);
-        service.updateProfile(doctor_id, profile);
-        return new ResponseEntity<>("Profile Updated Successfully", HttpStatus.OK);
+        try {
+            service.updateProfile(doctor_id, profile);
+            return new ResponseEntity<>("Profile Updated Successfully", HttpStatus.OK);
+        } catch (ProfileNotFoundException e) {
+            LOGGER.info("Profile not found for ID: " + doctor_id);
+            return ResponseEntity.notFound().build();
+        }
     }
+
 
     /**
      * Handles the HTTP DELETE request to delete a doctor's profile by ID.
