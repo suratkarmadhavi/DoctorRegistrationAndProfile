@@ -13,7 +13,7 @@ import com.oneHealth.DoctorRegistration.model.Specialization;
  * The ProfileService interface defines the contract for managing doctor profile-related operations.
  * This interface provides methods to save doctor profile information into the database.
  * @author Anup
- * @version 3.9.10
+ * @version 1.0
  */
 public interface ProfileService {
 

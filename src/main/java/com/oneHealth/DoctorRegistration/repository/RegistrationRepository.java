@@ -10,7 +10,7 @@ import com.oneHealth.DoctorRegistration.model.DoctorRegistration;
  * JpaRepository provides ready-to-use CRUD (Create, Read, Update, Delete) operations for the entity.
  * The entity managed by this repository is DoctorRegistration with its primary key of type Long.
  * @author Madhavi
- * @version 3.9.10
+ * @version 1.0
  */
 public interface RegistrationRepository extends JpaRepository<DoctorRegistration, Long> {
 	Optional<DoctorRegistration> findByEmail(String email);

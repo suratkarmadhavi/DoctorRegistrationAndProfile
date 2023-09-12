@@ -32,7 +32,7 @@ import jakarta.validation.Valid;
  * It provides endpoints for managing doctor profile information.
  * 
  * @author Anup
- * @version 3.9.10
+ * @version 1.0
  */
 @RestController
 @RequestMapping("/api/doctors/addressprofileregistration")
@@ -122,7 +122,6 @@ public class ProfileController {
         }
     }
 
-
     /**
      * Handles the HTTP DELETE request to delete a doctor's profile by ID.
      *
@@ -138,7 +137,13 @@ public class ProfileController {
         return new ResponseEntity<>("Doctor Profile deleted Successfully" , HttpStatus.OK);
     }
     
-    
+    /**
+     * Retrieves a list of doctor profiles by city and specialization.
+     *
+     * @param city The city to filter by.
+     * @param specialization The specialization to filter by.
+     * @return A list of DoctorProfile objects.
+     */
     @GetMapping("/by-city-and-specialization")
     public List<DoctorProfile> getDoctorsByCityAndSpecialization(
             @RequestParam String city,
@@ -146,16 +151,25 @@ public class ProfileController {
         return service.getDoctorsByCityAndSpecialization(city, specialization);
     }
     
-    
+    /**
+     * Retrieves a list of doctor profiles by specialization.
+     *
+     * @param specialization The specialization to filter by.
+     * @return A list of DoctorProfile objects.
+     */
     @GetMapping("/by-specialization")
     public List<DoctorProfile> getDoctorsBySpecialization(@RequestParam String specialization)
     {
-
         return service.getDoctorsBySpecialization(specialization);
-
     }
     
-    
+    /**
+     * Updates the documents for a specific doctor profile.
+     *
+     * @param doctor_id The ID of the doctor's profile to update.
+     * @param request The DocumentsDTO containing the updated documents.
+     * @return A ResponseEntity with a success message and HTTP status code 200 (OK) upon successful update.
+     */
     @PutMapping("/{doctor_id}/update-documents")
     public ResponseEntity<String> updateDoctorProfile(
             @PathVariable Long doctor_id, @RequestBody DocumentsDTO request) {
@@ -168,7 +182,13 @@ public class ProfileController {
         }
     }
     
-    
+    /**
+     * Updates the specialization name for a specific specialization.
+     *
+     * @param specId The ID of the specialization to update.
+     * @param request The Specialization object containing the updated specialization name.
+     * @return A ResponseEntity with a success message and HTTP status code 200 (OK) upon successful update.
+     */
     @PutMapping("/{specId}/update-specializations")
     public ResponseEntity<String> updateSpecializationName(
             @PathVariable Long specId, @RequestBody Specialization request) {
@@ -181,7 +201,13 @@ public class ProfileController {
         }
     }
     
-    
+    /**
+     * Removes a specialization from a doctor's profile.
+     *
+     * @param doctorId The ID of the doctor's profile.
+     * @param specializationId The ID of the specialization to remove.
+     * @return A ResponseEntity with a success message and HTTP status code 200 (OK) upon successful removal.
+     */
     @DeleteMapping("/{doctorId}/remove-specialization/{specializationId}")
     public ResponseEntity<String> removeSpecializationFromDoctor(
             @PathVariable Long doctorId, @PathVariable Long specializationId) {
@@ -194,6 +220,12 @@ public class ProfileController {
         }
     }
     
+    /**
+     * Checks if a doctor is available based on the provided doctor_id.
+     *
+     * @param doctor_id The ID of the doctor to check for availability.
+     * @return A boolean indicating the availability of the doctor.
+     */
     @GetMapping("/IsDoctorAvailable/{doctor_id}")
     public boolean checkIsDoctorAvailable(@PathVariable long doctor_id)
     {

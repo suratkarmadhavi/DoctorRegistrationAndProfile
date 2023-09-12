@@ -23,7 +23,7 @@ import jakarta.validation.constraints.NotEmpty;
  * This class represents the DoctorProfile entity used to store information about a doctor's profile.
  * Doctors' personal details, qualifications, experience, and document links are stored as attributes.
  * @author Anup
- * @version 3.9.10
+ * @version 1.0
  */
 @Entity
 public class DoctorProfile 

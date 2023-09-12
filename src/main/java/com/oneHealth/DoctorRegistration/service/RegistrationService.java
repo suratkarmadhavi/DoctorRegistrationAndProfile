@@ -10,7 +10,7 @@ import com.oneHealth.DoctorRegistration.model.DoctorRegistration;
  * This interface defines the contract for managing doctor registration in the application.
  * It declares methods for saving doctor registration details and retrieving them by profile ID.
  * @author Madhavi
- * @version 3.9.10
+ * @version 1.0
  */
 public interface RegistrationService {
 

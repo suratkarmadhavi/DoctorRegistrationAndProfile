@@ -5,7 +5,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-
 /**
  * Entity class representing DoctorAddress information.
  * This class is mapped to a database table to store address details of doctors.
@@ -27,101 +26,75 @@ public class DoctorAddress {
     private String city; // Field representing the city where the clinic is located
     private Long pinCode; // Field representing the postal code or PIN code of the clinic's location
     private long doctorId;
-	
-    
+
     public DoctorAddress() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+        super();
+    }
 
+    public DoctorAddress(Long clinicId, String clinicName, String address, String location, String city, Long pinCode, long doctorId) {
+        super();
+        this.clinicId = clinicId;
+        this.clinicName = clinicName;
+        this.address = address;
+        this.location = location;
+        this.city = city;
+        this.pinCode = pinCode;
+        this.doctorId = doctorId;
+    }
 
-	public DoctorAddress(Long clinicId, String clinicName, String address, String location, String city, Long pinCode,
-			long doctorId) {
-		super();
-		this.clinicId = clinicId;
-		this.clinicName = clinicName;
-		this.address = address;
-		this.location = location;
-		this.city = city;
-		this.pinCode = pinCode;
-		this.doctorId = doctorId;
-	}
+    public Long getClinicId() {
+        return clinicId; // Getter method for clinicId
+    }
 
+    public void setClinicId(Long clinicId) {
+        this.clinicId = clinicId; // Setter method for clinicId
+    }
 
-	public Long getClinicId() {
-		return clinicId;
-	}
+    public String getClinicName() {
+        return clinicName; // Getter method for clinicName
+    }
 
+    public void setClinicName(String clinicName) {
+        this.clinicName = clinicName; // Setter method for clinicName
+    }
 
-	public void setClinicId(Long clinicId) {
-		this.clinicId = clinicId;
-	}
+    public String getAddress() {
+        return address; // Getter method for address
+    }
 
+    public void setAddress(String address) {
+        this.address = address; // Setter method for address
+    }
 
-	public String getClinicName() {
-		return clinicName;
-	}
+    public String getLocation() {
+        return location; // Getter method for location
+    }
 
+    public void setLocation(String location) {
+        this.location = location; // Setter method for location
+    }
 
-	public void setClinicName(String clinicName) {
-		this.clinicName = clinicName;
-	}
+    public String getCity() {
+        return city; // Getter method for city
+    }
 
+    public void setCity(String city) {
+        this.city = city; // Setter method for city
+    }
 
-	public String getAddress() {
-		return address;
-	}
+    public Long getPinCode() {
+        return pinCode; // Getter method for pinCode
+    }
 
+    public void setPinCode(Long pinCode) {
+        this.pinCode = pinCode; // Setter method for pinCode
+    }
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
+    public long getDoctorId() {
+        return doctorId; // Getter method for doctorId
+    }
 
-
-	public String getLocation() {
-		return location;
-	}
-
-
-	public void setLocation(String location) {
-		this.location = location;
-	}
-
-
-	public String getCity() {
-		return city;
-	}
-
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-
-	public Long getPinCode() {
-		return pinCode;
-	}
-
-
-	public void setPinCode(Long pinCode) {
-		this.pinCode = pinCode;
-	}
-
-
-	public long getDoctorId() {
-		return doctorId;
-	}
-
-
-	public void setDoctorId(long doctorId) {
-		this.doctorId = doctorId;
-	}
-    
-    
-	
-   
-	
-    
-
-    
+    public void setDoctorId(long doctorId) {
+        this.doctorId = doctorId; // Setter method for doctorId
+    }
 }

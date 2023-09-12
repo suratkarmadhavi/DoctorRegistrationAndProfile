@@ -17,7 +17,7 @@ import jakarta.validation.constraints.Size;
  * Doctors can be registered with various attributes such as first name, last name, email, contact,
  * license number, specialization, status, and password.
  * @author Madhavi
- * @version 3.9.10
+ * @version 1.0
  */
 @Entity
 public class DoctorRegistration {

@@ -30,14 +30,27 @@ public class DoctorAddressServiceImpl implements DoctorAddressService {
 
     @Autowired
     private DoctorAddressRepository repo;
-
-    // Method to save a DoctorAddress object in the database.
+    /**
+     * Saves a list of doctor addresses to the database.
+     *
+     * @param address The list of DoctorAddress objects to be saved.
+     * @return The saved list of DoctorAddress objects.
+     */
     @Override
     public List<DoctorAddress> saveDoctorAddress(List<DoctorAddress> address) {
         return repo.saveAll(address);
     }
-
-    // Method to retrieve DoctorAddress by its ID and handle AddressNotFoundException if the address for the given doctorId is not found.
+    
+    
+    
+    /**
+     * Retrieves a DoctorAddress by its clinic ID and handles ProfileNotFoundException
+     * if the address for the given clinicId is not found.
+     *
+     * @param clinicId The ID of the DoctorAddress to retrieve.
+     * @return The retrieved DoctorAddress.
+     * @throws ProfileNotFoundException If no address is found with the specified clinicId.
+     */
     @Override
     public DoctorAddress getDoctorAddressByID(Long clinicId) throws ProfileNotFoundException {
         DoctorAddress address = repo.findById(clinicId)
@@ -46,21 +59,37 @@ public class DoctorAddressServiceImpl implements DoctorAddressService {
         return address;
     }
 
-    // Method to retrieve a list of all DoctorAddress objects from the database and handle DatabaseException if any occurs.
+    
+    /**
+     * Retrieves a list of all DoctorAddress objects from the database and handles
+     * DatabaseException if any database-related error occurs.
+     *
+     * @return A list of all DoctorAddress objects in the database.
+     * @throws DatabaseException If a database error occurs during retrieval.
+     */
     @Override
     public List<DoctorAddress> getAllDoctorsAddress() throws DatabaseException {
         List<DoctorAddress> addressList = repo.findAll();
         logger.info("In Service - All Doctor Addresses Retrieved: " + addressList);
         return addressList;
     }
-
-    // Method to update DoctorAddress by its ID and handle AddressNotFoundException if the address for the given doctorId is not found.
+    
+    
+    /**
+     * Updates a DoctorAddress by its clinic ID and handles ProfileNotFoundException
+     * if the address for the given clinicId is not found.
+     *
+     * @param clinicId       The ID of the DoctorAddress to update.
+     * @param updatedAddress The new DoctorAddress with updated information.
+     * @return The updated DoctorAddress.
+     * @throws ProfileNotFoundException If no address is found with the specified clinicId.
+     */
     @Override
     public DoctorAddress updateAddressByID(long clinicId, DoctorAddress updatedAddress) throws ProfileNotFoundException {
         DoctorAddress doctorAddress = repo.findById(clinicId)
                 .orElseThrow(() -> new ProfileNotFoundException("No Doctor Address found with this ID: " + clinicId));
 
-        // Update address property with the new value from updatedAddress
+        // Update address properties with the new values from updatedAddress
         doctorAddress.setClinicName(updatedAddress.getClinicName());
         doctorAddress.setAddress(updatedAddress.getAddress());
         doctorAddress.setLocation(updatedAddress.getLocation());
@@ -72,7 +101,14 @@ public class DoctorAddressServiceImpl implements DoctorAddressService {
         return updatedAddressResult;
     }
 
-    // Method to delete DoctorAddress by its ID and handle AddressNotFoundException if the address for the given doctorId is not found.
+    /**
+     * Deletes a DoctorAddress by its clinic ID and handles ProfileNotFoundException
+     * if the address for the given clinicId is not found.
+     *
+     * @param clinicId The ID of the DoctorAddress to delete.
+     * @return The deleted DoctorAddress.
+     * @throws ProfileNotFoundException If no address is found with the specified clinicId.
+     */
     @Override
     public DoctorAddress deleteAddressByID(long clinicId) throws ProfileNotFoundException {
         DoctorAddress doctorAddress = repo.findById(clinicId)
@@ -83,9 +119,16 @@ public class DoctorAddressServiceImpl implements DoctorAddressService {
         return doctorAddress;
     }
 
-	@Override
-	public List<DoctorAddress> getAddressesByDoctorId(long doctorId) {
-		return repo.findByDoctorId(doctorId);
-	}
+
+    /**
+     * Retrieves a list of DoctorAddress objects by a given doctor's ID.
+     *
+     * @param doctorId The ID of the doctor for whom addresses are retrieved.
+     * @return A list of DoctorAddress objects associated with the specified doctorId.
+     */
+    @Override
+    public List<DoctorAddress> getAddressesByDoctorId(long doctorId) {
+        return repo.findByDoctorId(doctorId);
+    }
 
 }

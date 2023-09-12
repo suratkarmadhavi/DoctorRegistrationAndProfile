@@ -23,7 +23,7 @@ import com.oneHealth.DoctorRegistration.service.ProfileService;
  * The ProfileServiceImplementation class provides the implementation of the ProfileService interface.
  * It handles the business logic for managing doctor profile-related operations.
  * @author Anup
- * @version 3.9.10
+ * @version 1.0
  */
 @Service
 public class ProfileServiceImplementation implements ProfileService {
